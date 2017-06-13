@@ -22,6 +22,11 @@ namespace PDL.Synthetical.Services
             userInfoRepo.Delete(entity);
         }
 
+        public UserInfo GetById(int Id)
+        {
+            return userInfoRepo.GetById(Id);
+        }
+
         public IEnumerable<UserInfo> GetPageList(int pageIndex, int pageSize, out long rowsCount, object predicate = null, bool buffer = true)
         {
             throw new NotImplementedException();

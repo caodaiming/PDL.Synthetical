@@ -40,5 +40,15 @@ namespace PDL.Synthetical.Api.Controllers
             userInfoService.Update(entity);
             return Ok();
         }
+
+        [Route("api/userinfogetbyid")]
+        public IHttpActionResult GetById(int id)
+        {
+            var userInfo = userInfoService.GetById(id);
+            return Ok(new
+            {
+                data = userInfo
+            });
+        }
     }
 }

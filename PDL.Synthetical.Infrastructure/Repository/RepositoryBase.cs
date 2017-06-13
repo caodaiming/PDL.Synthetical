@@ -49,53 +49,53 @@ namespace PDL.Synthetical.Infrastructure.Repository
 
         public virtual T GetById(long Id)
         {
-            return dbConnection.Get<T>(Id);
+            return DbConnection.Get<T>(Id);
         }
 
         public virtual T GetById(int Id)
         {
-            return dbConnection.Get<T>(Id);
+            return DbConnection.Get<T>(Id);
         }
 
         public virtual T GetById(string Id)
         {
-            return dbConnection.Get<T>(Id);
+            return DbConnection.Get<T>(Id);
         }
 
         public virtual async Task<T> GetByIdAsync(long Id)
         {
-            return await dbConnection.GetAsync<T>(Id);
+            return await DbConnection.GetAsync<T>(Id);
         }
 
         public virtual async Task<T> GetByIdAsync(int Id)
         {
-            return await dbConnection.GetAsync<T>(Id);
+            return await DbConnection.GetAsync<T>(Id);
         }
 
         public virtual IEnumerable<T> GetAll()
         {
-            return dbConnection.GetList<T>();
+            return DbConnection.GetList<T>();
         }
         public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await dbConnection.GetListAsync<T>();
+            return await DbConnection.GetListAsync<T>();
         }
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
         {
-            return dbConnection.GetList<T>().AsQueryable().Where(where);
+            return DbConnection.GetList<T>().AsQueryable().Where(where);
         }
 
         public virtual async Task<IEnumerable<T>> GetManyAsync(Expression<Func<T, bool>> where)
         {
-            return await dbConnection.GetListAsync<T>();
+            return await DbConnection.GetListAsync<T>();
         }
 
         public virtual IEnumerable<T> GetPageList(int pageIndex, int pageSize, out long rowsCount, object predicate = null,
             IList<ISort> sort = null, bool buffer = true)
         {
             if (sort == null) sort = new List<ISort>();
-            rowsCount = dbConnection.Count<T>(predicate);
-            return dbConnection.GetPage<T>(predicate, sort, pageIndex, pageSize, null, null, buffer);
+            rowsCount = DbConnection.Count<T>(predicate);
+            return DbConnection.GetPage<T>(predicate, sort, pageIndex, pageSize, null, null, buffer);
         }
 
 
@@ -109,7 +109,7 @@ namespace PDL.Synthetical.Infrastructure.Repository
             bool isSuccess = false;
             foreach (var item in entityList)
             {
-                dbConnection.Insert<T>(item);
+                DbConnection.Insert<T>(item);
             }
             isSuccess = true;
             return isSuccess;
